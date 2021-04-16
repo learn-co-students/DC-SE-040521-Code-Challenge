@@ -12,6 +12,7 @@ function getFetch(){
     })
 }
 
+
 function createNames(data){
     const spanner = document.createElement('span')
     spanner.innerText=data.name
@@ -58,7 +59,6 @@ function addInfo(data){
 
         // debugger
 
-        // e.target.reset()
         calsObj = {calories: totCals}
     
         const reqObj = {
@@ -73,9 +73,31 @@ function addInfo(data){
                 document.querySelector('#calories').innerText = data.calories
             })
     
+        
+    })
 
-        // addCalories(e)
-        // e.target.reset()
+    document.querySelector('#reset-btn').addEventListener('click',(e)=>{
+        // const calspan = document.querySelector('#calories').innerText
+        // calspan = 0
+        animalId = data.id
+        
+
+        zeroObj = {calories: 0}
+    
+        const reqObj = {
+            headers: {"Content-Type": "application/json"},
+            method: "PATCH",
+            body: JSON.stringify(zeroObj)
+            }
+    
+            fetch(url+animalId,reqObj)
+            .then((resp)=>resp.json())
+            .then(function(data){
+                document.querySelector('#calories').innerText = data.calories
+            })
+
+        
+        
     })
         
 

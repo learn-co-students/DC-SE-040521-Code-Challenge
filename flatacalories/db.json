@@ -10,13 +10,13 @@
       "id": 2,
       "name": "Mr. Monkey",
       "image": "https://thumbs.gfycat.com/FatalInnocentAmericanshorthair-max-1mb.gif",
-      "calories": 25132
+      "calories": 0
     },
     {
       "id": 3,
       "name": "Miss. Zebra",
       "image": "https://media2.giphy.com/media/20G9uNqE3K4dRjCppA/source.gif",
-      "calories": 257
+      "calories": 215
     },
     {
       "id": 4,
@@ -28,7 +28,7 @@
       "id": 5,
       "name": "Mr. Panda",
       "image": "https://media.giphy.com/media/ALalVMOVR8Qw/giphy.gif",
-      "calories": 146
+      "calories": 215
     },
     {
       "id": 6,
