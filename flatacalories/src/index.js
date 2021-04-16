@@ -102,38 +102,3 @@ function addInfo(data){
         
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function addCalories(e){
-//     console.log(e)
-//     const addCals = e.target[1].value
-//     // e.target.reset()
-//     newCals = {calories: addCals}
-
-//     const reqObj = {
-//         headers: {"Content-Type": "application/json"},
-//         method: "PATCH",
-//         body: JSON.stringify(newCals)
-//         }
-
-//         fetch(url+btn.id,reqObjFirst)
-//         .then((resp)=>resp.json())
-//         .then(function(data){})
-
-    
-    
-    
-// }
