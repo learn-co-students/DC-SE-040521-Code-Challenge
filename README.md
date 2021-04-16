@@ -1,6 +1,6 @@
 ### Instructions for Every Challenge
 
-Before **every challenge**, clone down this repo using the `git clone` command and the Clone HTTPS link. This is important - we need you to have a clean repo to work from. _Do not use your old clones of this repo!_
+Before **every challenge**, clone down this repo using the `git clone` command and the Clone SSH link. This is important - we need you to have a clean repo to work from. _Do not use your old clones of this repo!_
 
 `cd` into the directory of your current code challenge.
 
