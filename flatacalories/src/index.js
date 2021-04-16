@@ -24,6 +24,10 @@ function renderCharacters(character){
 
   characterSpan.addEventListener("click", (event) => {
 
+    fetch(baseURL+(character.id))
+    .then(resp => resp.json())
+    .then(character => {
+      
     const characterInfo = document.querySelector("#detailed-info");
 
     const characterName = document.querySelector("#name")
@@ -36,9 +40,8 @@ function renderCharacters(character){
     characterCalories.innerText = character.calories;
 
     const inputId = document.querySelector("#characterId");
-    //inputId.dataset.id = character.id;
     inputId.innerText = character.id;
-
+    })
   })
 }
 
@@ -50,6 +53,7 @@ function submitCalories() {
     event.preventDefault();
 
     const characterId = +event.target[0].innerText;
+    //debugger
 
     const calorieCount = +document.querySelector("#calories").innerText
 
@@ -71,4 +75,33 @@ function submitCalories() {
 
     event.target.reset();
   }) 
+
+  resetCalories();
 }
+
+function resetCalories() {
+
+  const resetButton = document.querySelector("#reset-btn")
+  
+  resetButton.addEventListener("click", (event) => {
+    const id = +characterId.innerText;
+
+    const resetCalories = {
+        calories: +0
+    }
+  
+    const resetObj = {
+      headers: {"Content-Type": "application/json"},
+      method: "PATCH",
+      body: JSON.stringify(resetCalories)
+    }
+  
+    fetch(baseURL+id, resetObj)
+    .then(resp => resp.json())
+    .then(emptiedCalories => {
+        document.querySelector("#calories").innerText = emptiedCalories.calories;
+      })
+    })
+  }
+
+
