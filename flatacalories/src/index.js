@@ -1,7 +1,8 @@
 const BASE_URL = "http://localhost:3000/characters"
 
 fetchCharacters()
-handleCalories()
+addCalories()
+// addNewName()
 resetCaloriesBtn()
 
 
@@ -39,7 +40,7 @@ function fetchCharacters() {
 
 // STEP 3:  User click triggers event and adds calories to char
 //          onto server as well as the DOM
-function handleCalories() {
+function addCalories() {
     // Add event listener to form submit
     const myForm = document.getElementById('calories-form')
     myForm.addEventListener('submit', event => {
@@ -80,7 +81,6 @@ function resetCaloriesBtn() {
     resetBtn.addEventListener('click', event => {
         // Update server and reflect on the DOM
         // so we need a PATCH request
-        debugger
         const patchObj = {
             method: "PATCH",
             headers: {
@@ -100,4 +100,37 @@ function resetCaloriesBtn() {
     })
 }
 
-// Second deliverable
+// Second deliverable: Change a character's name
+function addNewName() {
+    // Add event listener to submit
+    const myForm = document.getElementById('calories-form')
+    myForm.addEventListener('submit', event => {
+        event.preventDefault()
+
+        // Update server and reflect on the DOM
+        const newName = document.getElementById('calories-form').children[3].value
+        const patchObj = {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                name: newName
+            })
+        }
+        fetch(`${BASE_URL}/${event.target.children[0].id}`, patchObj)
+            .then(res => res.json())
+            .then(data => {
+                // Change calories value in DOM
+                const pointForm = document.getElementById('detailed-info')
+                pointForm.children[0].innerText = newName
+            })
+    })
+}
+
+// We need to account for two types of form submit
+function formSubmitHandler() {
+
+
+}
+
