@@ -45,7 +45,7 @@ function addInfo(data){
         // let animalId = ""
         console.log(data)
         
-        animalId = e.target[0].innerText
+        animalId = data.id
         parseInt(animalId)
         console.log(animalId)
 
