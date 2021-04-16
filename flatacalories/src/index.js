@@ -2,6 +2,7 @@ const BASE_URL = "http://localhost:3000/characters"
 
 fetchCharacters()
 handleCalories()
+resetCaloriesBtn()
 
 
 // STEP 1:  fetch request... retrieve characters and 
@@ -31,7 +32,7 @@ function fetchCharacters() {
             detailedDiv.children[0].innerText = event.target.innerText
             detailedDiv.children[1].src = event.target.src
             detailedDiv.children[2].children[0].innerText = event.target.dataset.calories
-            detailedDiv.children[3].children[0].id = event.target.id                // < STEP 3
+            detailedDiv.children[3].children[0].id = event.target.id        // < STEP 3
         })
     }))
 }
@@ -45,7 +46,7 @@ function handleCalories() {
         event.preventDefault()
 
         // Now we add whatever's in "Enter calories" to the server
-        // and reflect it on the DOM
+        // and afterwards, reflect it on the DOM
         const userInput = +document.getElementById('calories-form').children[1].value
         const serverCalories = +event.target.previousElementSibling.children[0].innerText
         const patchObj = {
@@ -69,3 +70,34 @@ function handleCalories() {
             })
     })
 }
+
+// Advanced Deliverables
+//
+// First deliverable: Reset calories button
+function resetCaloriesBtn() {
+    // Add event listener to calories button
+    const resetBtn = document.getElementById('reset-btn')
+    resetBtn.addEventListener('click', event => {
+        // Update server and reflect on the DOM
+        // so we need a PATCH request
+        debugger
+        const patchObj = {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                calories: 0
+            })
+        }
+        fetch(`${BASE_URL}/${event.target.previousElementSibling.children[0].id}`, patchObj)
+            .then(res => res.json())
+            .then(data => {
+                // reflect reset in the DOM
+                const pointForm = document.getElementById('detailed-info')
+                pointForm.children[2].children[0].innerText = 0
+            })
+    })
+}
+
+// Second deliverable

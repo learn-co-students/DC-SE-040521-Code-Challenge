@@ -28,13 +28,13 @@
       "id": 5,
       "name": "Mr. Panda",
       "image": "https://media.giphy.com/media/ALalVMOVR8Qw/giphy.gif",
-      "calories": -50
+      "calories": 0
     },
     {
       "id": 6,
       "name": "Mrs. Monkey",
       "image": "https://cdn.dribbble.com/users/1832502/screenshots/4387756/monkeyanim.gif",
-      "calories": 0
+      "calories": 100
     }
   ]
 }
