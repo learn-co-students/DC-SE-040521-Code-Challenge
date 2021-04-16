@@ -2,7 +2,7 @@ const baseURL = 'http://localhost:3000/characters/'
 
 
 fetchChar()
-// submitCal()
+ //submitCal()
 
 function fetchChar() {
     fetch(baseURL)
@@ -40,6 +40,7 @@ function addSpan(chars) {
     
             
              const addBtn = document.getElementById('calories-form')
+         
              addBtn.addEventListener('submit', submitCal)
             
             //detailedInfo.append(charName, charImg, charCal)
@@ -50,6 +51,7 @@ function addSpan(chars) {
 
 
 function submitCal(e) {
+        e.preventDefault()
 
         const id = e.target.id
         
@@ -60,7 +62,7 @@ function submitCal(e) {
         const calCount = +document.getElementById('calories').innerText
 
         const addCal = {
-            calories: parseInt(calCount) + parseInt(newCal)
+            calories: calCount + newCal
         }
 
         const calObj = {calories: addCal}
@@ -71,12 +73,12 @@ function submitCal(e) {
             body: JSON.stringify(calObj)
         }
 
-        fetch(baseURL+id, reqObj)
+        fetch(baseURL+charId, reqObj)
         .then(res => res.json())
         .then(updatedCal => {
-            document.getElementById('calories').innerText = chars.calories;
+            document.getElementById('calories').innerText = updatedCal.calories;
         })
-        e.target.reset()
+       
 
     }
     
