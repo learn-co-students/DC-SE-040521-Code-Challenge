@@ -1,7 +1,6 @@
 document.addEventListener("DOMContentLoaded", init)
 
 function init() {
-  //functions to run at start
   getCharacters();
   submitCalories();
 }
