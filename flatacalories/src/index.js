@@ -50,10 +50,6 @@ function addSpan(chars) {
 
 
 function submitCal(e) {
-    const form = document.getElementById('calories-form')
-
-    form.addEventListener('submit', (e) => {
-        e.preventDefault()
 
         const id = e.target.id
         
@@ -82,10 +78,10 @@ function submitCal(e) {
         })
         e.target.reset()
 
-    })
+    }
     
     
-}
+
 
 
 
