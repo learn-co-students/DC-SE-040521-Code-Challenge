@@ -10,48 +10,54 @@ function getCharacters() {
 }
 
 function makeCharacters(data) {
-  //console.log(data);
   const charSpan = document.createElement("span");
   charSpan.innerText = data.name;
-  charSpan.id = data.id;
-
   document.getElementById("character-bar").appendChild(charSpan);
 
   charSpan.addEventListener("click", () => {
-    //console.log(event);
     const charName = document.querySelector("p");
     charName.innerText = data.name;
+
+    const id = document.getElementById("characterId");
+    id.innerText = data.id;
 
     const charImage = document.getElementById("image");
     charImage.src = data.image;
 
     const calories = document.getElementById("calories");
     calories.innerHTML = data.calories;
-    document.getElementById("detailed-info").append(charName, charImage);
+
+    document
+      .getElementById("detailed-info")
+      .append(charName, charImage, calories);
   });
 }
 
 function addCalories() {
-  console.log("click");
-  const caloriesBtn = document.getElementById("calories-form");
+  const caloriesForm = document.getElementById("calories-form");
 
-  caloriesBtn.addEventListener("submit", (event) => {
+  caloriesForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    console.log(event);
-    const newCalories = event.target[1].value;
-    //const newCalories = document.querySelector("#calories");
+
+    const charId = event.target[0].innerText;
+    console.log(charId);
+
+    const oldCalories = document.getElementById("calories").innerText;
+
+    const newCalories = {
+      calories: oldCalories + event.target[1].value,
+    };
     console.log(newCalories);
     const reqObj = {
       headers: { "Content-Type": "application/json" },
       method: "PATCH",
       body: JSON.stringify(newCalories),
     };
-    fetch(baseUrl + "/" + characterId, reqObj)
+    fetch(baseUrl + "/" + charId, reqObj)
       .then((response) => response.json())
       .then(
-        (updateCalories) =>
-          (document.getElementById(caloriesBtn).innerText = newCalories)
+        (updateCal) =>
+          (document.getElementById("calories").innerText = updateCal.calories)
       );
-    event.target.reset();
   });
 }
