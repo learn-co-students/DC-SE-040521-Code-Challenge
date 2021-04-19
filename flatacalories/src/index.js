@@ -1,122 +1,188 @@
 const baseURL = 'http://localhost:3000/characters/'
 
-
-fetchChar()
- //submitCal()
-
-function fetchChar() {
-    fetch(baseURL)
-    .then(res => res.json())
-    .then((charData) => charData.forEach(addSpan))
-}
-
-function addSpan(chars) {
-    const charBar = document.getElementById('character-bar')    
-
-     const span = document.createElement('span')
-     span.innerText = chars.name
-    //  span.id = 'character-bar'
-
-    charBar.appendChild(span)
     
-    span.addEventListener('click', (e)=> {
-    
-            //const id = e.target
-    
-            const detailedInfo = document.getElementById('detailed-info')
-            
-            const charName = document.getElementById('name')
-            charName.innerText = chars.name
-            
-            const charImg = document.getElementById('image')
-            charImg.src = chars.image
-            
-            const charCal = document.getElementById('calories')
-            //charCal.id = "calories"
-            charCal.innerText = chars.calories
-    
-            const inputId = document.getElementsByTagName('characterId')
-            inputId.innerText = chars.id
-    
-            
-             const addBtn = document.getElementById('calories-form')
-         
-             addBtn.addEventListener('submit', submitCal)
-            
-            //detailedInfo.append(charName, charImg, charCal)
-            
-        })
-    }
-    
+    fetchChar();
+    addCal()
 
 
-function submitCal(e) {
-        e.preventDefault()
 
-        const id = e.target.id
+    function fetchChar() {
+        fetch(baseURL)
+            .then(res => res.json())
+            .then((charData) => charData.forEach((chars) => {
+                 addSpan(chars)
+            }) 
+    )}
+
+
+
+
+
+
+
+    
+    function addSpan(chars){
+        const charDiv = document.querySelector('#character-bar')
+    
+        const newSpan = document.createElement('span')
+        newSpan.innerText = chars.name
+    
+        charDiv.appendChild(newSpan)
+
         
-        const newCal = e.target[1].value
+        newSpan.addEventListener('click', (e) => {
+            
+            
 
-        const charId = +e.target[0].innerText
+            const charDiv = document.querySelector('#detailed-info')
+            
+            const CharName = document.querySelector('#name')
+            CharName.innerText = chars.name
 
-        const calCount = +document.getElementById('calories').innerText
+            const charImg = document.querySelector('#image')
+            charImg.src = chars.image
 
-        const addCal = {
-            calories: calCount + newCal
-        }
+            const charCal = document.querySelector('#calories')
+            charCal.innerText = chars.calories
 
-        const calObj = {calories: addCal}
+            const charId = document.querySelector('#characterId')
+            charId.innerText = chars.id
 
-        const reqObj = {
-            headers: {'Content-Type': 'application/json'},
-            method: "PATCH",
-            body: JSON.stringify(calObj)
-        }
 
-        fetch(baseURL+charId, reqObj)
-        .then(res => res.json())
-        .then(updatedCal => {
-            document.getElementById('calories').innerText = updatedCal.calories;
-        })
-       
+    })
+    }
+
+    function addCal() {
+        const calForm = document.querySelector('#calories-form')
+        calForm.addEventListener('submit', (e) => {
+            e.preventDefault()
+            
+            const newId = +e.target[0].innerText
+
+            const calCount = +document.querySelector('#calories').innerText
+
+            const newCal = +e.target[1].value
+
+            const addCal = {
+                calories: calCount + newCal
+            }
+
+
+            
+            const reqObj = {
+                headers: {"Content-Type": "application/json"},
+                method: "PATCH",
+                body: JSON.stringify(addCal)
+            }
+           
+           fetch(baseURL+newId, reqObj)
+           .then(res => res.json())
+           .then((updatedCals) => {
+            document.querySelector('#calories').innerText = updatedCals.calories
+           })
+           
+           
+            })
 
     }
+
+
+
+
+
+
+
+
+
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // function addSpan(chars){
+//     const charBar = document.querySelector('#character-bar')    
 
+//      const span = document.createElement('span')
+//      span.innerText = chars.name
+//     //   span.id = chars.id
 
+//     charBar.appendChild(span);
+  
+    
+//             //const id = e.target
+    
+//             const detailedInfo = document.querySelector('#detailed-info')
+            
+//             const charName = document.querySelector('#name')
+//             charName.innerText = chars.name
+            
+//             const charImg = document.querySelector('#image')
+//             charImg.src = chars.image
+            
+//             const charCal = document.querySelector('#calories')
+//             //charCal.id = "calories"
+//             charCal.innerTexts = chars.calories
+    
+//             const inputId = document.querySelector('#characterId')
+//             inputId.innerText = chars.id
+//             //used a .getelementbytagnamebyaccident
+    
+            
+            
+//            // detailedInfo.append(charName, charImg, charCal)
+            
+//         })
+//     })
+    
+//     }
+    
+    
+//      function submitCal() {
 
+//     const addBtn = document.querySelector('#calories-form')
 
-// const newVal = ''
+//     addBtn.addEventListener('submit', (event) => {
+    
+//         event.preventDefault();
 
+//         const charId = +event.target[0].innerText;
 
+//         const calCount = +document.querySelector('#calories').innerText
 
-// function submitCals() {
-//     const form = document.querySelector('calories-form')
-
-//     form.addEventListener('click', (e) => {
-//         e.preventDefault()
-//         const charId = e.target.id.innerText
-
-//         const calCount = +document.getElementsByTagName('calories').innerText
-
-//         const addCal = {
-//             calories: calCount + +e.target.name.value
+//         const newCal = +event.target[1].value
+    
+//             const addCal = {
+//             calories: calCount + newCal
 //         }
-
+        
 //         const reqObj = {
-//             headers: {'Content-Type': "application/json"},
+//             headers: {'Content-Type': 'application/json'},
 //             method: "PATCH",
 //             body: JSON.stringify(addCal)
 //         }
-//         fetch(baseURL+charId, reqObj)
+        
+//         fetch(baseURL + charId, reqObj)
 //         .then(res => res.json())
-//         .then(newCal => {
-//             document.getElementById('calories').innerText = newCal.calories
+//         .then((updatedCal) => {
+//             document.querySelector('#calories').innerText = updatedCal.calories;
 //         })
-//         e.target.reset()
+        
+//         event.target.reset();
+        
 //     })
 // }
+
+
+
 
 
 
