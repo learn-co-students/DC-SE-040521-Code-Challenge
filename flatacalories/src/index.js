@@ -42,8 +42,49 @@ function renderCharacter(character) {
                         .then( updateCal => {
                             characterCalories.innerText = updateCal.calories
                     })
+
+            const resetCaloriest = document.getElementById("reset-btn")
+                  resetCaloriest.addEventListener("click", () => {
+
+                    const resetCal = {
+                        calories: 0
+                    }
+
+                    const reqObj = {
+                        headers: {"Content-Type": "application/json"},
+                        method: "PATCH",
+                        body: JSON.stringify(resetCal),
+                    }
+
+                    fetch(BASE_URL+character.id, reqObj)
+                        .then( res => res.json())
+                        .then( reset => {
+                            characterCalories.innerText = +reset.calories
+                    })
+
+            const changeName = document.getElementById("name-update")
+                  changeName.addEventListener("click", (event) => {
+                      event.preventDefault()
+
+                    const updateName = {
+                        name: event.target["name"].value,
+                    }
+
+                    const reqObj = {
+                        headers: {"Content-Type": "application/json"},
+                        method: "PATCH",
+                        body: JSON.stringify(updateName),
+                    }
+
+                    fetch(BASE_URL+character.id, reqObj)
+                        .then( res => res.json())
+                        .then( update => {
+                            characterName.innerText = update.name
+                    })
+                })
             })
         })
+    })
 
             const characterName = document.createElement("h4")
             characterName.innerText = character.name
