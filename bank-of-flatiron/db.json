@@ -104,6 +104,13 @@
       "category": "Food",
       "amount": "334",
       "id": 15
+    },
+    {
+      "date": "2021-05-07",
+      "description": "Palaw",
+      "category": "Food",
+      "amount": "333",
+      "id": 16
     }
   ]
 }

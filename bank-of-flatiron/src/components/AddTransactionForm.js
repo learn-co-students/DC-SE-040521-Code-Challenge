@@ -8,6 +8,12 @@ class AddTransactionForm extends Component {
     amount: 0
   }
 
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     const tmp = {...this.state}
@@ -27,11 +33,11 @@ class AddTransactionForm extends Component {
       <div className="ui segment">
         <form onSubmit={this.handleSubmit} className="ui form">
           <div className="inline fields">
-            <input onChange={(e) => this.setState({date: e.target.value})} type="date" name="date" value={this.state.date}/>
-            <input onChange={(e) => this.setState({description: e.target.value})} type="text" name="description" placeholder="Description" value={this.state.description}/>
-            <input onChange={(e) => this.setState({category: e.target.value})} type="text" name="category" placeholder="Category" value={this.state.category}/>
+            <input onChange={(e) => this.handleChange(e)} type="date" name="date" value={this.state.date}/>
+            <input onChange={(e) => this.handleChange(e)} type="text" name="description" placeholder="Description" value={this.state.description}/>
+            <input onChange={(e) => this.handleChange(e)} type="text" name="category" placeholder="Category" value={this.state.category}/>
             <input
-              onChange={(e) => this.setState({amount: e.target.value})}
+              onChange={(e) => this.handleChange(e)}
               type="number"
               name="amount"
               placeholder="Amount"
