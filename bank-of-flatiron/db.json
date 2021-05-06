@@ -83,6 +83,34 @@
       "description": "Venmo, Pay Roommate for Rent",
       "category": "Housing",
       "amount": -975
+    },
+    {
+      "date": "2021-05-06",
+      "description": "Vanilla latte from Starbucks",
+      "category": "Food",
+      "amount": -6.55,
+      "id": 13
+    },
+    {
+      "date": "2021-05-03",
+      "description": "Movies",
+      "category": "Entertainment",
+      "amount": -25,
+      "id": 15
+    },
+    {
+      "date": "2021-05-07",
+      "description": "Paycheck from Nintendo",
+      "category": "Income",
+      "amount": 2000,
+      "id": 16
+    },
+    {
+      "date": "2021-05-06",
+      "description": "Wine, Liquor Store",
+      "category": "Food",
+      "amount": -50,
+      "id": 17
     }
   ]
 }

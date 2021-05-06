@@ -1,12 +1,17 @@
 import React from "react";
 
-const Transaction = () => {
+const Transaction = ({ transaction, deleteTransaction }) => {
+
+  const { date, description, category, amount } = transaction
   return (
     <tr>
-      <td>{"your code here..."}</td>
-      <td>{"your code here..."}</td>
-      <td>{"your code here..."}</td>
-      <td>{"your code here..."}</td>
+      <td>{date}</td>
+      <td>{description}</td>
+      <td>{category}</td>
+      <td>{amount}</td>
+      <td>
+        <button onClick={() => deleteTransaction(transaction)}>X</button>
+      </td>
     </tr>
   );
 };
