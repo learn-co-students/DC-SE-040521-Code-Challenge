@@ -1,15 +1,47 @@
 import React, { Component } from "react";
 
 class AddTransactionForm extends Component {
+
+state = {
+  date: "",
+  description: "",
+  category: "",
+  amount: ""
+}
+
+addNewTr = (e) => {
+  e.preventDefault()
+  // console.log("Working")
+
+  const reqObj = {
+    headers: {"Content-Type": "application/json"},
+    method: "POST",
+    body: JSON.stringify({...this.state})
+  }
+
+  fetch ("http://localhost:6001/transactions/", reqObj)
+    .then (res => res.json())
+    .then ((transactionObj) => {
+      this.addNewTr(transactionObj)
+      this.setState({
+        date: "",
+        description: "",
+        category: "",
+        amount: ""
+      })
+    })
+}
+
   render() {
     return (
       <div className="ui segment">
-        <form className="ui form">
+        <form onSubmit={this.state.addNewTr} className="ui form">
+
           <div className="inline fields">
-            <input type="date" name="date" />
-            <input type="text" name="description" placeholder="Description" />
-            <input type="text" name="category" placeholder="Category" />
-            <input
+            <input value={this.state.date} onChange={(e) => this.setState({date: e.target.value})} type="date" name="date" />
+            <input value={this.state.description} onChange={(e) => this.setState({description: e.target.value})} type="text" name="description" placeholder="Description" />
+            <input value={this.state.category} onChange={(e) => this.setState({category: e.target.value})} type="text" name="category" placeholder="Category" />
+            <input value={this.state.amount} onChange={(e) => this.setState({amount: e.target.value})}
               type="number"
               name="amount"
               placeholder="Amount"
