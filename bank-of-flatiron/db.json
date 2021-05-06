@@ -83,6 +83,27 @@
       "description": "Venmo, Pay Roommate for Rent",
       "category": "Housing",
       "amount": -975
+    },
+    {
+      "amount": 5555,
+      "category": "Business Essentials",
+      "date": "2021-05-26",
+      "description": "Hookers and Blow",
+      "id": 13
+    },
+    {
+      "amount": 11.94,
+      "category": "Food",
+      "date": "2021-05-18",
+      "description": "Chipotle",
+      "id": 14
+    },
+    {
+      "amount": 2340,
+      "category": "Travel",
+      "date": "2021-05-31",
+      "description": "Cancun Trip",
+      "id": 15
     }
   ]
 }

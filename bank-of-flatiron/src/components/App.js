@@ -9,7 +9,8 @@ class App extends Component {
 
   state = {
     transactions: [],
-    searchBar: ""
+    searchBar: "",
+    sort: ""
   }
 
   componentDidMount() {
@@ -41,9 +42,26 @@ class App extends Component {
       }))
   }
 
-  render() {
+  changeSort = (sort) => this.setState({sort})
 
-    const searchFilter = this.state.transactions.filter((filtered) => filtered.description.includes(this.state.searchBar))
+  sortDescription = () => {
+    let displayDescription = this.state.transactions.filter((filtered) => filtered.description.includes(this.state.searchBar))
+   
+    if(this.state.sort === "Description"){
+      return displayDescription.sort((transaction1, transaction2) => transaction1.description > transaction2.description ? 1 : -1)
+    } else if(this.state.sort === "Category"){
+      return displayDescription.sort((transaction1, transaction2) => transaction1.category > transaction2.category ? 1 : -1)
+    } else if(this.state.sort === "Amount"){
+      return displayDescription.sort((transaction1, transaction2) => transaction1.amount > transaction2.amount ? 1 : -1)
+    } else if(this.state.sort === "Date"){
+      return displayDescription.sort((transaction1, transaction2) => transaction1.date < transaction2.date ? 1 : -1)
+    }else{
+      return displayDescription
+    }
+  }
+
+
+  render() {
 
     return (
       <div className="ui raised segment">
@@ -51,10 +69,12 @@ class App extends Component {
           <h2>The Royal Bank of Flatiron</h2>
         </div>
         <AccountContainer 
-          transactions={searchFilter}
+          transactions={this.sortDescription()}
           handleSearch={this.handleSearch}
           addTransaction={this.addTransaction}
           deleteTransaction={this.deleteTransaction}
+          sort={this.state.sort}
+          changeSort={this.changeSort}
         />
       </div>
     );
