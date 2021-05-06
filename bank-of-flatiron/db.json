@@ -83,6 +83,20 @@
       "description": "Venmo, Pay Roommate for Rent",
       "category": "Housing",
       "amount": -975
+    },
+    {
+      "date": "2021-05-06",
+      "description": "Vanilla latte from Starbucks",
+      "category": "Food",
+      "amount": 6.25,
+      "id": 13
+    },
+    {
+      "date": "2021-05-06",
+      "description": "New Pokemon Snap for Nintendo Switch",
+      "category": "Gift",
+      "amount": 60,
+      "id": 14
     }
   ]
 }
