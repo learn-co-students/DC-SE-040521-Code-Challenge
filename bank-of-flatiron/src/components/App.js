@@ -3,7 +3,7 @@ import AccountContainer from "./AccountContainer";
 import "../stylesheets/App.css";
 import TransactionsList from "./TransactionsList";
 
-const BASE_URL="http://localhost:6001/transactions"
+const BASE_URL="http://localhost:6001/transactions/"
 
 class App extends Component {
 
@@ -29,6 +29,18 @@ class App extends Component {
     })
   }
 
+  deleteTransaction = (targetObj) => {
+    const newTransactions = this.state.transactions.filter(transaction => transaction.id !== targetObj.id)
+    this.setState({
+      transactions: newTransactions
+    })
+
+    fetch(BASE_URL+targetObj.id, {method: "DELETE"})
+      .then(() => this.setState({
+        transactions: newTransactions
+      }))
+  }
+
   render() {
 
     const searchFilter = this.state.transactions.filter((filtered) => filtered.description.includes(this.state.searchBar))
@@ -42,6 +54,7 @@ class App extends Component {
           transactions={searchFilter}
           handleSearch={this.handleSearch}
           addTransaction={this.addTransaction}
+          deleteTransaction={this.deleteTransaction}
         />
       </div>
     );

@@ -11,7 +11,7 @@ class AccountContainer extends Component {
       <div>
         <Search handleSearch={this.props.handleSearch}/>
         <AddTransactionForm addTransaction={this.props.addTransaction}/>
-        <TransactionsList transactions={this.props.transactions}/>
+        <TransactionsList transactions={this.props.transactions} deleteTransaction={this.props.deleteTransaction}/>
       </div>
     );
   }
