@@ -7,7 +7,6 @@ const Search = ({ searchTransactions }) => {
         type="text"
         placeholder={"Search your Recent Transactions"}
         onChange={(event) => {
-          console.log("Searching...")
           searchTransactions(event.target.value);
         }}
       />

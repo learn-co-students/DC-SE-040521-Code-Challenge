@@ -9,7 +9,8 @@ class AccountContainer extends Component {
 
   state = {
     transactions: [],
-    searchText: ""
+    searchText: '',
+    sortBy: ''
   }
 
   componentDidMount(){
@@ -35,13 +36,49 @@ class AccountContainer extends Component {
     })
   }
 
-  render() {
+  sortTransactions = (type) => {
+    this.setState({sortBy: type})
+    
+    if (type === 'Description'){
+      this.setState({sortBy: 'Description'})
+      console.log("Sort by description")
+      this.state.transactions.sort((trans1, trans2) => trans1.description > trans2.description ? 1 : -1)
 
+    } else if (type === 'Category') {
+      this.setState({sortBy: 'Category'})
+      console.log("Sort by category")
+      this.state.transactions.sort((trans1, trans2) => {
+        if (trans1.category > trans2.category){
+          return 1
+        } else if (trans1.category < trans2.category){
+          return -1
+        } else {
+          return 0
+        }
+      })
+    }
+  }
+
+  deleteTransaction = (transactionObj) => {
+    const updatedTransactions = this.state.transactions.filter(transaction => transaction.id !== transactionObj.id)
+
+    const reqObj = {
+      headers: {"Content-Type": "application/json"},
+      method: "DELETE",
+      body: JSON.stringify(transactionObj)
+    }
+
+    fetch(baseURL+transactionObj.id, reqObj)
+    .then(resp => resp.json())
+    .then(this.setState({transactions: updatedTransactions}))
+  }
+
+  render() {
     return (
       <div>
         <Search searchTransactions={this.searchTransactions} />
         <AddTransactionForm addNewTransaction={this.addNewTransaction} />
-        <TransactionsList transactions={this.filterTransacations()} />
+        <TransactionsList transactions={this.filterTransacations()} deleteTransaction={this.deleteTransaction} sortTransactions={this.sortTransactions} sortBy={this.state.sortBy} />
       </div>
     );
   }

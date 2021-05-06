@@ -88,15 +88,22 @@
       "date": "2021-05-06",
       "description": "Vanilla latte from Starbucks",
       "category": "Food",
-      "amount": 6.25,
+      "amount": -6.55,
       "id": 13
     },
     {
-      "date": "2021-05-06",
-      "description": "New Pokemon Snap for Nintendo Switch",
-      "category": "Gift",
-      "amount": 60,
-      "id": 14
+      "date": "2021-05-03",
+      "description": "Movies",
+      "category": "Entertainment",
+      "amount": -25,
+      "id": 15
+    },
+    {
+      "date": "2021-05-07",
+      "description": "Paycheck from Nintendo",
+      "category": "Income",
+      "amount": 2000,
+      "id": 16
     }
   ]
 }

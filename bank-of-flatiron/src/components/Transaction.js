@@ -1,6 +1,6 @@
 import React from "react";
 
-const Transaction = ({ transaction }) => {
+const Transaction = ({ transaction, deleteTransaction }) => {
 
   const { date, description, category, amount } = transaction
   return (
@@ -9,6 +9,9 @@ const Transaction = ({ transaction }) => {
       <td>{description}</td>
       <td>{category}</td>
       <td>{amount}</td>
+      <td>
+        <button onClick={() => deleteTransaction(transaction)} >X</button>
+      </td>
     </tr>
   );
 };
