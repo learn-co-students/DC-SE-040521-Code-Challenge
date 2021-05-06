@@ -18,6 +18,10 @@ const TransactionsList = (props) => {
           <th>
             <h3 className="ui center aligned header">Amount</h3>
           </th>
+          <th>
+            <h3 className="ui center aligned header">Delete</h3>
+          </th>
+          
         </tr>
         
         {props.accounts.map(account => <Transaction key={account.id} accountData={account} deleteTransaction={props.deleteTransaction} />)}
