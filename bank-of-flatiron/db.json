@@ -86,10 +86,17 @@
     },
     {
       "id": 13,
-      "date": "2021-05-06",
-      "description": "Buble",
+      "date": "2021-05-14",
+      "description": "Burger King",
       "category": "Food",
-      "amount": "33"
+      "amount": "4444"
+    },
+    {
+      "id": 14,
+      "date": "2021-05-29",
+      "description": "Water",
+      "category": "Needs",
+      "amount": "202"
     }
   ]
 }

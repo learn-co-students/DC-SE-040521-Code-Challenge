@@ -10,6 +10,17 @@ class App extends Component {
     accounts: []
   }
 
+  deleteTransaction = (transactionObj) => {
+    const API = "http://localhost:6001/transactions/";
+    const newTransaction = this.state.accounts.filter((transaction) => transaction.id !== transactionObj.id);
+    this.setState({
+      accounts: newTransaction,
+    });
+
+    fetch(API+transactionObj.id, { method: 'DELETE' })
+        .then(data => console.log(this.state.accounts));
+  };
+
   componentDidMount() {
     fetch("http://localhost:6001/transactions/")
     .then(r => r.json())
@@ -39,7 +50,7 @@ class App extends Component {
         <div className="ui segment violet inverted">
           <h2>The Royal Bank of Flatiron</h2>
         </div>
-        <AccountContainer accounts={ this.filterAccount()/*this.state.accounts */} changeSearchText={this.changeSearchText} addTransaction={this.addTransaction}/>
+        <AccountContainer accounts={ this.filterAccount()/*this.state.accounts */} changeSearchText={this.changeSearchText} addTransaction={this.addTransaction} deleteTransaction={this.deleteTransaction}/>
       </div>
     );
   }

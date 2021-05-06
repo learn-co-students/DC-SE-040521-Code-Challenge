@@ -26,7 +26,15 @@ class AddTransactionForm extends Component {
 
     fetch("http://localhost:6001/transactions/", reqObj)
     .then(r => r.json())
-    .then(data => this.props.addTransaction(data))
+    .then(data => this.props.addTransaction(data));
+
+    this.setState({
+      id:"",
+    date: "",
+    description: "",
+    category: "",
+    amount: 0
+    });
 }
 
   render() {

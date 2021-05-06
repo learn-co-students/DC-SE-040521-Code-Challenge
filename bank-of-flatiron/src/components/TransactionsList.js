@@ -20,7 +20,7 @@ const TransactionsList = (props) => {
           </th>
         </tr>
         
-        {props.accounts.map(account => <Transaction key={account.id} accountData={account} />)}
+        {props.accounts.map(account => <Transaction key={account.id} accountData={account} deleteTransaction={props.deleteTransaction} />)}
       </tbody>
     </table>
   );

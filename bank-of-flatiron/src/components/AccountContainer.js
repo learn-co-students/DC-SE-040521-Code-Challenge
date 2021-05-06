@@ -9,7 +9,7 @@ class AccountContainer extends Component {
       <div>
         <Search changeSearchText={this.props.changeSearchText}  />
         <AddTransactionForm addTransaction={this.props.addTransaction} />
-        <TransactionsList  accounts = {this.props.accounts} />
+        <TransactionsList  accounts = {this.props.accounts} deleteTransaction={this.props.deleteTransaction}/>
         {/* {this.props.accounts.map(account => <TransactionsList key={account.key} accountData={account} />)} */}
         
       </div>
