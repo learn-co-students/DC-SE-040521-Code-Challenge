@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 class AddTransactionForm extends Component {
   state = {
+    id:"",
     date: "",
     description: "",
     category: "",

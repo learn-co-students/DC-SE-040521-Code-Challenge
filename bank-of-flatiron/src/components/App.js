@@ -6,7 +6,6 @@ import "../stylesheets/App.css";
 class App extends Component {
 
   state = {
-
     searchText: "",
     accounts: []
   }
@@ -27,7 +26,7 @@ class App extends Component {
     })
   }
 
-  filterAccount = () => this.state.accounts.filter(account => account.description.includes(this.state.searchText)); //fix lowercase
+  filterAccount = () => this.state.accounts.filter(account => account.description.toLowerCase().includes(this.state.searchText.toLowerCase())); //fix lowercase
 
   addTransaction = transaction => this.setState({accounts: [transaction, ...this.state.accounts]})
 
