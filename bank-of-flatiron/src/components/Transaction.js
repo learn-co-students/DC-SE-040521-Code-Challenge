@@ -2,7 +2,7 @@ import React from "react";
 
 const Transaction = (props) => {
   return (
-    <tr>
+    <tr onClick = {() => props.deleteTrans(props.transaction)} >
       <td>{props.transaction.date}</td>
       <td>{props.transaction.description}</td>
       <td>{props.transaction.category}</td>
