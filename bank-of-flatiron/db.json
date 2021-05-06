@@ -83,6 +83,20 @@
       "description": "Venmo, Pay Roommate for Rent",
       "category": "Housing",
       "amount": -975
+    },
+    {
+      "date": "2021-05-04",
+      "description": "Chinese Food",
+      "category": "Food",
+      "amount": "-15",
+      "id": 13
+    },
+    {
+      "date": "2021-05-03",
+      "description": "fresh threads",
+      "category": "Fashion",
+      "amount": 0,
+      "id": 14
     }
   ]
 }
