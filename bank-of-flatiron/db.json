@@ -83,6 +83,27 @@
       "description": "Venmo, Pay Roommate for Rent",
       "category": "Housing",
       "amount": -975
+    },
+    {
+      "date": "2021-05-13",
+      "description": "Buble",
+      "category": "Food",
+      "amount": "333",
+      "id": 13
+    },
+    {
+      "date": "2021-05-06",
+      "description": "Buble",
+      "category": "Food",
+      "amount": "0333",
+      "id": 14
+    },
+    {
+      "date": "2021-05-08",
+      "description": "Burger",
+      "category": "Food",
+      "amount": "334",
+      "id": 15
     }
   ]
 }
