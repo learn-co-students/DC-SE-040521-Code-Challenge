@@ -6,9 +6,7 @@ const Search = ({ searchTransactions }) => {
       <input
         type="text"
         placeholder={"Search your Recent Transactions"}
-        onChange={(event) => {
-          searchTransactions(event.target.value);
-        }}
+        onChange={(event) => searchTransactions(event.target.value)}
       />
       <i className="circular search link icon"></i>
     </div>

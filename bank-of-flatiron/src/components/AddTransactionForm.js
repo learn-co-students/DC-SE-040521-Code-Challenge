@@ -42,9 +42,27 @@ class AddTransactionForm extends Component {
       <div className="ui segment">
         <form onSubmit={this.submitNewTransaction} className="ui form">
           <div className="inline fields">
-            <input value={this.state.date} onChange={(event) => this.setState({date: event.target.value})} type="date" name="date" />
-            <input value={this.state.description} onChange={(event) => this.setState({description: event.target.value})} type="text" name="description" placeholder="Description" />
-            <input value={this.state.category} onChange={(event) => this.setState({category: event.target.value})} type="text" name="category" placeholder="Category" />
+
+            <input 
+            value={this.state.date}
+            onChange={(event) => this.setState({date: event.target.value})}
+            type="date"
+            name="date" />
+
+            <input 
+            value={this.state.description}
+            onChange={(event) => this.setState({description: event.target.value})}
+            type="text"
+            name="description"
+            placeholder="Description" />
+
+            <input 
+            value={this.state.category}
+            onChange={(event) => this.setState({category: event.target.value})}
+            type="text"
+            name="category"
+            placeholder="Category" />
+
             <input
               value={this.state.amount} 
               onChange={(event) => this.setState({amount: parseFloat(event.target.value)})}
@@ -53,6 +71,7 @@ class AddTransactionForm extends Component {
               placeholder="Amount"
               step="0.01"
             />
+            
           </div>
           <button className="ui button" type="submit">
             Add Transaction

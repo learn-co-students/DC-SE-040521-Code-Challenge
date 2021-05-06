@@ -19,21 +19,27 @@ class AccountContainer extends Component {
     .then(transactions => this.setState({transactions}))
   }
 
-  searchTransactions = (text) => {
-    this.setState({
-      searchText: text
-    })
-  }
+  searchTransactions = (text) => this.setState({searchText: text})
 
   filterTransacations = () => {
     const filteredTransactions = this.state.transactions.filter(transaction => transaction.description.toLowerCase().includes(this.state.searchText.toLowerCase()))
     return filteredTransactions
   }
 
-  addNewTransaction = (newObj) => {
-    this.setState({
-      transactions: [...this.state.transactions, newObj]
-    })
+  addNewTransaction = (newObj) => this.setState({transactions: [...this.state.transactions, newObj]})
+
+  deleteTransaction = (transactionObj) => {
+    const updatedTransactions = this.state.transactions.filter(transaction => transaction.id !== transactionObj.id)
+
+    const reqObj = {
+      headers: {"Content-Type": "application/json"},
+      method: "DELETE",
+      body: JSON.stringify(transactionObj)
+    }
+
+    fetch(baseURL+transactionObj.id, reqObj)
+    .then(resp => resp.json())
+    .then(this.setState({transactions: updatedTransactions}))
   }
 
   sortTransactions = (type) => {
@@ -57,20 +63,6 @@ class AccountContainer extends Component {
         }
       })
     }
-  }
-
-  deleteTransaction = (transactionObj) => {
-    const updatedTransactions = this.state.transactions.filter(transaction => transaction.id !== transactionObj.id)
-
-    const reqObj = {
-      headers: {"Content-Type": "application/json"},
-      method: "DELETE",
-      body: JSON.stringify(transactionObj)
-    }
-
-    fetch(baseURL+transactionObj.id, reqObj)
-    .then(resp => resp.json())
-    .then(this.setState({transactions: updatedTransactions}))
   }
 
   render() {

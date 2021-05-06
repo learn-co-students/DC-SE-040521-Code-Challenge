@@ -104,6 +104,13 @@
       "category": "Income",
       "amount": 2000,
       "id": 16
+    },
+    {
+      "date": "2021-05-06",
+      "description": "Wine, Liquor Store",
+      "category": "Food",
+      "amount": -50,
+      "id": 17
     }
   ]
 }

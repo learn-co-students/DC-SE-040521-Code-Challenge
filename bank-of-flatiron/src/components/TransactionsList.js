@@ -11,10 +11,20 @@ const TransactionsList = ({ transactions, deleteTransaction, sortTransactions, s
             <label>Sort Stocks by:</label>
           </th>
           <th colSpan="1">
-            <input type='radio' value='Description' checked={sortBy === 'Description'} onChange={(event) => sortTransactions(event.target.value)}/>
+            <input
+            type='radio'
+            value='Description'
+            checked={sortBy === 'Description'}
+            onChange={(event) => sortTransactions(event.target.value)}
+            />
           </th>
           <th colSpan="1">
-            <input type='radio' value='Category' checked={sortBy === 'Category'} onChange={(event) => sortTransactions(event.target.value)}/>
+            <input
+            type='radio'
+            value='Category'
+            checked={sortBy === 'Category'}
+            onChange={(event) => sortTransactions(event.target.value)}
+            />
           </th>
           <th colSpan="1">
           </th>

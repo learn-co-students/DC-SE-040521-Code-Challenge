@@ -10,7 +10,7 @@ const Transaction = ({ transaction, deleteTransaction }) => {
       <td>{category}</td>
       <td>{amount}</td>
       <td>
-        <button onClick={() => deleteTransaction(transaction)} >X</button>
+        <button onClick={() => deleteTransaction(transaction)}>X</button>
       </td>
     </tr>
   );
