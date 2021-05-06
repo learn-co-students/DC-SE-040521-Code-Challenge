@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "mpm": "^0.0.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
+    "react-scripts": "3.2.0",
     "semantic-ui-css": "^2.2.10",
-    "react-scripts": "3.2.0"
+    "start": "^5.1.0"
   },
   "scripts": {
     "start": "json-server --watch db.json -p 6001 & open http://localhost:6001/transactions & PORT=6002 react-scripts start && fg",
