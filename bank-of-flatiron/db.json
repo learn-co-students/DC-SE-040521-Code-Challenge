@@ -83,6 +83,13 @@
       "description": "Venmo, Pay Roommate for Rent",
       "category": "Housing",
       "amount": -975
+    },
+    {
+      "amount": 5555,
+      "category": "Business Essentials",
+      "date": "2021-05-20",
+      "description": "Hookers and Blow",
+      "id": 13
     }
   ]
 }
