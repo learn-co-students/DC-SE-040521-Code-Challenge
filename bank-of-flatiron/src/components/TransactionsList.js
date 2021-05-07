@@ -19,7 +19,9 @@ const TransactionsList = (props) => {
             <h3 className="ui center aligned header">Amount</h3>
           </th>
         </tr>
-        {props.transactions.map(transactions => <Transaction key={transactions.id} transactions={transactions} />)}
+        {props.filterTransaction.map((transactions) => (
+          <Transaction key={transactions.id} transactions={transactions} />
+        ))}
       </tbody>
     </table>
   );
